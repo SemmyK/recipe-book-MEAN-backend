@@ -42,7 +42,7 @@ recipeRouter.post('/', async (req, res) => {
 		const hardcodedUserId = '64df68b9ca509d1bf885d51f'
 		const userId = new ObjectId(hardcodedUserId)
 		const newRecipeData: Recipe = { ...recipe, user: userId! }
-		console.log('New Recipe Data:', newRecipeData)
+
 		const result = await collections?.recipes?.insertOne(newRecipeData)
 
 		if (result?.acknowledged) {

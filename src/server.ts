@@ -41,7 +41,7 @@ connectToDatabase(ATLAS_URI)
 
 		app.use(express.json())
 		app.use('/api/recipes', recipeRouter)
-		app.get('/api/recipes', (req, res) => {
+		app.get('/', (req, res) => {
 			res.json({ message: 'This is your API response' })
 		})
 		app.listen(PORT, () => {
