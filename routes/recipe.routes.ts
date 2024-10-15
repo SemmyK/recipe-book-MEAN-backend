@@ -1,6 +1,7 @@
 import * as express from 'express'
 import { ObjectId } from 'mongodb'
 import { collections } from '../config/database'
+import { Recipe } from '../models/recipe.model'
 
 export const recipeRouter = express.Router()
 recipeRouter.use(express.json())
@@ -38,7 +39,11 @@ recipeRouter.get('/:id', async (req, res) => {
 recipeRouter.post('/', async (req, res) => {
 	try {
 		const recipe = req.body
-		const result = await collections?.recipes?.insertOne(recipe)
+		const hardcodedUserId = '64df68b9ca509d1bf885d51f'
+		const userId = new ObjectId(hardcodedUserId)
+		const newRecipeData: Recipe = { ...recipe, user: userId! }
+		console.log('New Recipe Data:', newRecipeData)
+		const result = await collections?.recipes?.insertOne(newRecipeData)
 
 		if (result?.acknowledged) {
 			res.status(201).send(`Created a new recipe: ID ${result.insertedId}.`)

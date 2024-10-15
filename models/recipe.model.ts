@@ -19,3 +19,7 @@ export interface Recipe {
 	createdAt: Date
 	updatedAt: Date
 }
+
+export interface User {
+	_id?: mongodb.ObjectId
+}

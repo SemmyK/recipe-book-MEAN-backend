@@ -1,8 +1,9 @@
 import * as mongodb from 'mongodb'
-import { Recipe } from '../models/recipe.model'
+import { Recipe, User } from '../models/recipe.model'
 
 export const collections: {
 	recipes?: mongodb.Collection<Recipe>
+	users?: mongodb.Collection
 } = {}
 
 export async function connectToDatabase(uri: string) {
@@ -12,8 +13,10 @@ export async function connectToDatabase(uri: string) {
 	const db = client.db('recipe-book')
 	await applySchemaValidation(db)
 
-	const employeesCollection = db.collection<Recipe>('recipes')
-	collections.recipes = employeesCollection
+	const recipesCollection = db.collection<Recipe>('recipes')
+	collections.recipes = recipesCollection
+	const usersCollection = db.collection<User>('users')
+	collections.users = usersCollection
 }
 
 // For more information about schema validation, see this blog series: https://www.mongodb.com/blog/post/json-schema-validation--locking-down-your-model-the-smart-way
@@ -25,7 +28,9 @@ async function applySchemaValidation(db: mongodb.Db) {
 			additionalProperties: true,
 			properties: {
 				_id: {},
-				user: mongodb.ObjectId,
+				user: {
+					bsonType: 'objectId', // Ensures user is an ObjectId
+				},
 				title: {
 					bsonType: 'string',
 					description: 'Please add title',
