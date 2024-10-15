@@ -19,6 +19,9 @@ recipeRouter.get('/', async (_req, res) => {
 recipeRouter.get('/:id', async (req, res) => {
 	try {
 		const id = req?.params?.id
+		if (!ObjectId.isValid(id)) {
+			res.status(400).send('Invalid recipe ID format')
+		}
 		const query = { _id: new ObjectId(id) }
 		const recipe = await collections?.recipes?.findOne(query)
 
@@ -53,6 +56,9 @@ recipeRouter.post('/', async (req, res) => {
 recipeRouter.put('/:id', async (req, res) => {
 	try {
 		const id = req?.params?.id
+		if (!ObjectId.isValid(id)) {
+			res.status(400).send('Invalid recipe ID format')
+		}
 		const recipe = req.body
 		const query = { _id: new ObjectId(id) }
 		const result = await collections?.recipes?.updateOne(query, {
