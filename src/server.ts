@@ -20,7 +20,14 @@ connectToDatabase(ATLAS_URI)
 	.then(() => {
 		const app = express()
 		app.use(cors())
-		app.use(cors({ origin: 'http://localhost:4200' }))
+		app.use(
+			cors({
+				origin: [
+					'http://localhost:4200',
+					'https://recipe-book-mean-backend.onrender.com',
+				],
+			})
+		)
 		app.use(express.json())
 		app.use('/api/recipes', recipeRouter)
 
