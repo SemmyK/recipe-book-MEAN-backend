@@ -64,7 +64,14 @@ async function applySchemaValidation(db: mongodb.Db) {
 					],
 					default: 'meal',
 				},
-				createdAt: mongodb.Timestamp,
+				createdAt: {
+					bsonType: 'date',
+					description: 'Timestamp when the recipe was created',
+				},
+				updatedAt: {
+					bsonType: 'date',
+					description: 'Timestamp when the recipe was last updated',
+				},
 			},
 		},
 	}

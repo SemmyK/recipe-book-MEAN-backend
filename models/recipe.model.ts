@@ -16,4 +16,6 @@ export interface Recipe {
 		| 'dessert'
 	ingredients: string[]
 	_id?: mongodb.ObjectId
+	createdAt: Date
+	updatedAt: Date
 }
