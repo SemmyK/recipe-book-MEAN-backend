@@ -22,11 +22,7 @@ connectToDatabase(ATLAS_URI)
 		app.use(cors())
 		app.use(
 			cors({
-				origin: [
-					'http://localhost:4200',
-					'https://recipe-book-mean-backend.onrender.com',
-					'https://recipe-book-mean-frontend-ldq7fqo5c-semmyks-projects.vercel.app/',
-				],
+				origin: '*',
 			})
 		)
 		app.use(express.json())
