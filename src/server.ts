@@ -22,6 +22,7 @@ connectToDatabase(ATLAS_URI)
 		const allowedOrigins = [
 			'https://frontend-3l8g70u1e-semmyks-projects.vercel.app/',
 			'https://frontend-omega-nine-87.vercel.app/',
+			'*',
 			'http://localhost:4200',
 		]
 
