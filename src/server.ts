@@ -20,8 +20,7 @@ connectToDatabase(ATLAS_URI)
 	.then(() => {
 		const app = express()
 		const allowedOrigins = [
-			'https://recipe-book-mean-frontend-semmyk-semmyks-projects.vercel.app',
-			'https://recipe-book-mean-frontend-jcvaiox2a-semmyks-projects.vercel.app/',
+			'https://frontend-3l8g70u1e-semmyks-projects.vercel.app/',
 			'http://localhost:4200',
 		]
 
