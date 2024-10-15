@@ -20,8 +20,8 @@ connectToDatabase(ATLAS_URI)
 	.then(() => {
 		const app = express()
 		const allowedOrigins = [
-			'https://frontend-3l8g70u1e-semmyks-projects.vercel.app/',
-			'https://frontend-omega-nine-87.vercel.app/',
+			'https://frontend-3l8g70u1e-semmyks-projects.vercel.app',
+			'https://frontend-omega-nine-87.vercel.app',
 			'*',
 			'http://localhost:4200',
 		]
@@ -37,7 +37,7 @@ connectToDatabase(ATLAS_URI)
 			},
 		}
 
-		app.use(cors({ origin: allowedOrigins }))
+		app.use(cors({ origin: allowedOrigins, credentials: true }))
 
 		app.use(express.json())
 		app.use('/api/recipes', recipeRouter)
