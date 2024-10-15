@@ -25,6 +25,7 @@ connectToDatabase(ATLAS_URI)
 				origin: [
 					'http://localhost:4200',
 					'https://recipe-book-mean-backend.onrender.com',
+					'https://recipe-book-mean-frontend-ldq7fqo5c-semmyks-projects.vercel.app/',
 				],
 			})
 		)
