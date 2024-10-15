@@ -16,7 +16,6 @@ export async function connectToDatabase(uri: string) {
 	collections.recipes = employeesCollection
 }
 
-// Update our existing collection with JSON schema validation so we know our documents will always match the shape of our Employee model, even if added elsewhere.
 // For more information about schema validation, see this blog series: https://www.mongodb.com/blog/post/json-schema-validation--locking-down-your-model-the-smart-way
 async function applySchemaValidation(db: mongodb.Db) {
 	const jsonSchema = {
